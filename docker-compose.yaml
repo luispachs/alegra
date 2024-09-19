@@ -1,0 +1,96 @@
+
+services:
+  database:
+    image: mysql
+    container_name: database_alegra
+    restart: no
+    networks: 
+      - backend
+    ports:
+      - "127.0.0.1:3307:3306"
+    expose: 
+      - 3306
+    volumes:
+      - dbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=LaPs#D3v3l0pMen7
+      - MYSQL_DATABASE=alegra-test
+      - MYSQL_USER=Laps
+      - MYSQL_PASSWORD=LaPs#D3v3l0pMen7
+    
+  cache:
+    restart: no
+    container_name: cache_alegra
+    image: memcached
+    networks: 
+      - backend
+    ports:
+      - "127.0.0.1:11211:11211"
+    expose: 
+      - 11211
+
+  backend:
+    restart: always
+    image: alegra-test-backend
+    container_name: backend-alegra
+    build:
+      context: ./backend
+      dockerfile: backend.Dockerfile
+    develop:
+      watch:
+        - path: ./backend
+          action: sync
+          target: /home/backend
+    command: bash -c "php artisan serve --host=0.0.0.0"
+    ports:
+      - "127.0.0.1:8000:8000"
+    expose:
+      - 8000
+    networks:
+      - backend
+    depends_on:
+      - database
+      - cache
+        
+  frontend:
+    container_name: frontend-alegra
+    image: alegra-test-frontend
+    restart: always
+    build:
+      context: ./frontend
+      dockerfile: frontend.Dockerfile
+    develop:
+      watch:
+        - path: ./frontend
+          action: sync
+          target: /home/frontend
+    command: bash -c "npm run dev"
+    ports:
+      - "127.0.0.1:5173:5173"
+    expose:
+      - 5173
+    networks:
+      - backend
+   
+
+
+networks:
+  backend:
+    driver: bridge
+    attachable: true
+
+  frontend:
+    driver: bridge
+    attachable: true
+
+
+  database:
+    driver: bridge
+
+
+  memcached:
+    driver: bridge
+ 
+volumes:
+  dbdata:
+
