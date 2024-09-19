@@ -26,6 +26,4 @@ const currentView =  computed(():DefineComponent=>{
   <component v-bind:is="currentView"/>
 </template>
 
-<style scoped>
 
-</style>
