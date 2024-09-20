@@ -1,18 +1,21 @@
 <script setup lang="ts">
-import { ref} from 'vue';
+import { ref,inject} from 'vue';
 
-    const props = defineProps(['label','type','placeholder','isRequired']);  
+    const props = defineProps(['label','placeholder']);  
 
+    let email:{email:string|null,updateEmail:(newEmail:string)=>void}|undefined=inject('email');
     const input = ref('');
     function updateInputValue(event:Event){
             const target = event.target as HTMLInputElement
             input.value=target.value;
+            email!["updateEmail"](input.value);
+            
     }
 </script>
 <template>
     <article class="form-group">
         <label v-bind:for="label" class="form-label">{{ label }}</label>
-        <input v-bind:type="type" v-bind:placeholder="placeholder" v-bind:required="isRequired" class="form-input" v-model="input" v-on:input="updateInputValue($event)"/>
+        <input type="email" v-bind:placeholder="placeholder" required class="form-input" v-model="input" v-on:input="updateInputValue($event)"/>
     </article>
 </template>
 

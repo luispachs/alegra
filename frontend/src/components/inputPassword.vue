@@ -1,18 +1,20 @@
 <script setup lang="ts">
-import { ref} from 'vue';
+import { ref,inject} from 'vue';
 
-    const props = defineProps(['label','type','placeholder','isRequired']);  
+    const props = defineProps(['label','placeholder','isRequired']);  
+    const password:{password:string|null,updatePassword:(newPassword:string)=>void}|undefined=inject('password');
 
     const input = ref('');
     function updateInputValue(event:Event){
             const target = event.target as HTMLInputElement
             input.value=target.value;
+            password!["updatePassword"](input.value);
     }
 </script>
 <template>
     <article class="form-group">
         <label v-bind:for="label" class="form-label">{{ label }}</label>
-        <input v-bind:type="type" v-bind:placeholder="placeholder" v-bind:required="isRequired" class="form-input" v-model="input" v-on:input="updateInputValue($event)"/>
+        <input type="password" v-bind:placeholder="placeholder" required class="form-input" v-model="input" v-on:input="updateInputValue($event)"/>
     </article>
 </template>
 
