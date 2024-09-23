@@ -6,6 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "aws/aws-sdk-php": "^3.322",
+        "aws/aws-sdk-php-laravel": "^3.9",
+        "firebase/php-jwt": "^6.10",
+        "laravel-notification-channels/webpush": "^9.0",
         "laravel/framework": "^11.9",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9"

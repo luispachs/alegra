@@ -9,6 +9,9 @@
   --thistle: #d3c0d2ff;
   --dark:#000000;
   --light:#ffffff;
+  --error:rgb(255, 120, 120);
+  --successfull:rgb(133, 247, 133);
+  --warning:rgb(238, 238, 138);
 }
 
 
@@ -28,5 +31,9 @@
     --tea-green-2: #2D2E2E;
     --rose-quartz: #716969;
     --thistle: #BCABAE; 
+    --error:rgb(255, 120, 120);
+    --successfull:rgb(133, 247, 133);
+  --warning:rgb(238, 238, 138);
+
   }
 }

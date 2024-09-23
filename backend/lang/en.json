@@ -1,0 +1,6 @@
+{
+    "error_invalid_credentials": "Password and/or email are invalid",
+    "general_exception": "Upps!!. has been a unexpected error",
+    "user_has_a_order":"The user has already requested a plate"
+
+}

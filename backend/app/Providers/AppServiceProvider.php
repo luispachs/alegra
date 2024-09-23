@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use App\Guard\AlegraGuard;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +22,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+
     }
 }

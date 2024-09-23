@@ -1,0 +1,5 @@
+{
+    "error_invalid_credentials": "Contraseña y/o email son invalidos",
+    "general_exception": "Upps!!. A Ocurrido un error inesperado",
+    "user_has_a_order":"El usuario ya ha solicitado un plato"
+}
