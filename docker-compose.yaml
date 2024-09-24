@@ -32,7 +32,7 @@ services:
   backend:
     restart: always
     image: alegra-test-backend
-    container_name: backend-alegra
+    #container_name: backend-alegra
     build:
       context: ./backend
       dockerfile: backend.Dockerfile
@@ -53,7 +53,7 @@ services:
       - cache
         
   frontend:
-    container_name: frontend-alegra
+    #container_name: frontend-alegra
     image: alegra-test-frontend
     restart: always
     build:
