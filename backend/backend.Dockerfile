@@ -6,8 +6,8 @@ WORKDIR /home/backend
 RUN apt-get update && apt-get install -y libmemcached-dev libssl-dev zlib1g-dev zip\
 	&& pecl install memcached-3.2.0 \
     && pecl install memcache-8.0 \
-	docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable pdo_mysql &&
-	&& docker-php-ext-enable memcached memcache 
+	docker-php-ext-install mysqli pdo pdo_mysql curl \
+	&& docker-php-ext-enable memcached memcache pdo_mysq curl 
 RUN composer install
 RUN printf "APP_NAME=Laravel \n\
 APP_ENV=production \n\
