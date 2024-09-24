@@ -63,7 +63,7 @@ services:
     image: alegra-test-frontend
     restart: always
     build:
-      context: ./frontend
+      context: /app
       dockerfile: frontend.Dockerfile
     deploy:
       mode: replicated
