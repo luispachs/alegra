@@ -1,7 +1,6 @@
 import './assets/main.css';
 import { createApp } from 'vue';
 import App from './App.vue';
-import {ref,computed, type DefineComponent, type Component} from 'vue';
 import Home from "@/routes/Home.vue";
 import Login from '@/routes/Login.vue';
 import NotFound from '@/routes/NotFound.vue';

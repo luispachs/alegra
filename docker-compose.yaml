@@ -7,7 +7,7 @@ services:
     networks: 
       - backend
     ports:
-      - "127.0.0.1:3307:3306"
+      - "127.0.0.1:3306:3306"
     expose: 
       - 3306
     volumes:
@@ -36,11 +36,12 @@ services:
     build:
       context: ./backend
       dockerfile: backend.Dockerfile
-    develop:
-      watch:
-        - path: ./backend
-          action: sync
-          target: /home/backend
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: vip
+      label: 
+        com.alegra-test.back: "frontend test alegra"
     command: bash -c "php artisan serve --host=0.0.0.0"
     ports:
       - "127.0.0.1:8000:8000"
@@ -59,11 +60,12 @@ services:
     build:
       context: ./frontend
       dockerfile: frontend.Dockerfile
-    develop:
-      watch:
-        - path: ./frontend
-          action: sync
-          target: /home/frontend
+    deploy:
+      mode: replicated
+      replicas: 2
+      endpoint_mode: vip
+      label: 
+        com.alegra-test.front: "frontend test alegra"
     command: bash -c "npm run dev"
     ports:
       - "127.0.0.1:5173:5173"
