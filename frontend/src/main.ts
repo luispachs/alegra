@@ -5,7 +5,6 @@ import {ref,computed, type DefineComponent, type Component} from 'vue';
 import Home from "@/routes/Home.vue";
 import Login from '@/routes/Login.vue';
 import NotFound from '@/routes/NotFound.vue';
-import Kitchen from '@/routes/Kitchen.vue';
 import {createWebHistory,createRouter} from 'vue-router';
 
 const validateToken = async (to:any,from:any,next:any)=>{
@@ -35,7 +34,6 @@ const validateToken = async (to:any,from:any,next:any)=>{
 const routes = [
                     {path:"/",name:'login',component:Login},
                     {path:"/:jwt/home",name:'home',component:Home,beforeEnter:validateToken},
-                    {path:'/:jwt/kitchen',name:'kitchen',component:Kitchen,beforeEnter:validateToken},
                     {path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
                 ];
 const router =createRouter({

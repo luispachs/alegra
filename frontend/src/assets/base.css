@@ -22,6 +22,11 @@
   box-sizing:border-box;
 }
 
+h1{
+  width: 100%;
+  text-align: center;
+}
+
 @media (prefers-color-scheme: dark) {
   :root{
     --dark:#000000;

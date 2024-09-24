@@ -1,22 +1,14 @@
 <script setup lang="ts" >
 import GenerateOrden from '@/components/GenerateOrden.vue';
 import OrdenHistorial from '@/components/OrdenHistorial.vue';
-import { onBeforeMount, Suspense,ref } from 'vue';
-
-
-    const token = localStorage.getItem('jwt_token');
-    const ordens = ref([]);
-    fetch(import.meta.env.VITE_BASE_API_URL + "/kitchen/orden",
-                            {
-                                method:'get',
-                                headers:{
-                                    'Authorization':"Bearer "+token,
-                                    "Content-Type":"Application/json"
-                                }
-                            }).then(async orderResponse =>{
-                                let json = await orderResponse.json();
-                                ordens.value = json.ordens;
-                            });
+import PurchaseHistorial from '@/components/PurchaseHistorial.vue';
+import { Suspense,ref } from 'vue';
+import IngredientList from '@/components/IngredientList.vue';
+const key = ref(0);
+setTimeout(()=>{
+    key.value++
+},10000);
+  
     
 
 </script>
@@ -27,11 +19,29 @@ import { onBeforeMount, Suspense,ref } from 'vue';
         </section>
         <section class="panel-right">
             <Suspense>
-            <OrdenHistorial :ordens="ordens"/>
+            <OrdenHistorial  :key="key"/>
             <template #fallback>
                 ...loading
             </template>
         </Suspense>
+        </section>
+    </section>
+    <section class="container">
+        <section class="panel-left">
+            <Suspense>
+                <PurchaseHistorial :key="key"/> 
+                <template #fallback>
+                    ...loading
+                </template>
+            </Suspense>
+        </section>
+        <section class="panel-right">
+            <Suspense>
+                <IngredientList :key="key"/>
+                <template #fallback>
+                    ...loading
+                </template>
+            </Suspense>
         </section>
     </section>
 </template>
@@ -43,6 +53,7 @@ import { onBeforeMount, Suspense,ref } from 'vue';
         width: 100%;
         justify-content: start;
         align-items: center;
+        height: 40vh;
     }
     .panel-left{
         width: 30%;
@@ -54,4 +65,5 @@ import { onBeforeMount, Suspense,ref } from 'vue';
     .panel-right{
         width: 70%;
     }
+
 </style>

@@ -23,9 +23,7 @@ final class LoginTest extends TestCase
             ["laps1308@gmail.com","lapsDev1308",200],
             ["laps1308@gmai.com","lapsDev",401],
             ["laps1308+05@gmail.com","lsDev1308",401],
-            ["laps1308@gmail.com","lapsDev1308",200],
-     
-            
+            ["laps1308@gmail.com","lapsDev1308",200]      
         ];
     }
     #[DataProvider('credentials')]

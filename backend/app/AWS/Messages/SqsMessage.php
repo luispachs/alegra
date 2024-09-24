@@ -3,11 +3,11 @@
 namespace App\AWS\Messages;
 
 use Aws\Sqs\SqsClient;
-use Serializable;
+use Illuminate\Database\Eloquent\Model;
 
 class SqsMessage{
 
-    public function getMessage(string $queue ,Serializable $object,string $id,string $groupId):array{
+    public function getMessage(string $queue ,Model $object,string $id,string $groupId):array{
         $bodyMessage = $object->serialize();
         $date = new \DateTime('now');
         $message = [

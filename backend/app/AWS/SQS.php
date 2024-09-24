@@ -4,6 +4,7 @@ namespace App\AWS;
 
 use Aws\Sqs\SqsClient;
 use Aws\Result;
+use Jose\Component\Encryption\Recipient;
 
 class SQS{
 
@@ -24,5 +25,19 @@ class SQS{
 
     public function sendMessage(array $message):Result{
         return $this->client->sendMessage($message);
+    }
+
+    public function getMessage(array $config){
+        $message = $this->client->receiveMessage($config);
+        return $message->get('Messages');
+    }
+
+    public function deleteMessage(string $queue,string $reciept){
+        return $this->client->deleteMessage(
+            [
+                'QueueUrl' => env($queue),
+                'ReceiptHandle' => $reciept
+            ]
+            );
     }
 }

@@ -11,6 +11,7 @@ class OrdenModel extends Model implements \Serializable
     use HasFactory;
     protected $table ="ordens";
     public $timestamps = false;
+    protected $fillable =['status'];
 
     public function customer():HasOne{
         return $this->hasOne(CustomerModel::class,'id','customer');
@@ -30,12 +31,10 @@ class OrdenModel extends Model implements \Serializable
 
     public function unserialize(string $data)
     {   $content = json_decode($data,true);
-        $order = new OrdenModel();
-        $order->id = $content['id'];
-        $order->customer = $content['customer'];
-        $order->recipe = $content['recipe'];
-        $order->status = $content['status'];
+        $this->id = $content['id'];
+        $this->customer = $content['customer'];
+        $this->recipe = $content['recipe'];
+        $this->status = $content['status'];
 
-        return $order;
     }
 }

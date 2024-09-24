@@ -3,6 +3,7 @@
 
 namespace App\Repository;
 
+use App\Enum\OrdenStatusEnum;
 use App\Models\CustomerModel;
 use App\Models\OrdenModel;
 use App\Models\RecipeModel;
@@ -66,9 +67,19 @@ class OrdenRepository implements RepositoryInterface{
             $ordens = DB::table('ordens')
                                 ->select(['customers.id as customer','recipes.recipe as recipe', 'ordens.status as status','customers.firstname as firstname', 'customers.middle_name as middlename', 'customers.last_name as lastname', 'customers.email as email','recipes.name as name', 'ordens.id as ordenId', 'recipes.duration as duration','recipes.temperature as temperature'])
                                 ->join('customers','customers.id','=','ordens.customer')
-                                ->join('recipes','recipes.id','=','ordens.recipe')->get();
+                                ->join('recipes','recipes.id','=','ordens.recipe')->orderBy('ordens.id','asc')->get();
             Cache::put($key,$ordens,300);
             return $ordens;
     }
+
+    public function changeStatus(int $id,OrdenStatusEnum $status){
+      
+        $result = DB::table('ordens')->where('id','=',$id)->update(['status' =>$status->value]) ;
+    
+        return $result;
+    }
+
+
+    
 
 }

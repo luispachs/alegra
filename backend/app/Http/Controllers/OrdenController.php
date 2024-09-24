@@ -6,6 +6,7 @@ use App\AWS\Messages\SqsMessage;
 use App\AWS\SQS;
 use App\Models\OrdenModel;
 use App\Repository\CustomerRepository;
+use App\Repository\IngredientRepository;
 use App\Repository\OrdenRepository;
 use App\Repository\RecipeRepository;
 use Illuminate\Http\JsonResponse;
@@ -32,7 +33,6 @@ class OrdenController extends Controller
             return response()->json(['message'=>__('user_has_a_order')],400);
         }
         $recipe = $recipeRepository->getById(random_int(1000,1005));
-
         $order = $ordenRepository->create(['customer_id'=>$customer->id,'recipe_id'=>$recipe->id]);
         $message = $message->getMessage('SQS_ORDEN_QUEUE', $order,md5($customer->email."-".$order->id),md5($customer->email."-".str_replace(' ','-',$recipe->name)));
         $sqs->sendMessage($message);
@@ -44,7 +44,7 @@ class OrdenController extends Controller
             'name'=> $recipe->name
             ],
         'order'=> $order->id
-        ]);
+        ],200);
 
         }catch(\Exception $e){
             Log::error($e->getMessage(),['trace'=>$e->getTraceAsString()]);
@@ -58,6 +58,17 @@ class OrdenController extends Controller
             
             $ordens = $ordenRepository->GetAllOrdensDB()->toArray();
             return response()->json(['ordens'=>$ordens],200);
+        }catch(\Exception $e){
+            return response()->json(['message'=>__('general_exception')],500);
+        }
+    }
+
+    public function getIngredients(Request $request,IngredientRepository $ingredientRepository):JsonResponse
+    {
+        try{
+            $ingredients = $ingredientRepository->getAll()->toArray();
+            return response()->json(['data'=>$ingredients],200);
+
         }catch(\Exception $e){
             return response()->json(['message'=>__('general_exception')],500);
         }

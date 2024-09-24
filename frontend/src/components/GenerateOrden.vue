@@ -47,6 +47,10 @@ const submit =async ()=>{
                                     }
                                 }
                                 );
+    firstname.value="";
+    middlename.value="";
+    lastname.value="";
+    email.value="";
     let jsonData = await response.json();
     if(response.status == 200){
         
@@ -56,10 +60,18 @@ const submit =async ()=>{
         isError.value=true;
         errorMessage.value = jsonData.message;
     }
+
+
+
+    setTimeout(()=>{
+        isError.value=false;
+        isSuccessfull.value=false;
+    },2000);
 }
 
 </script>
 <template>
+    <h1>Generar Orden</h1>
     <section class="customer-form">
             <article class="alert successfull" :class="{'hide':!isSuccessfull}">
                <span>Order generada: {{ orderId }}</span>
@@ -69,15 +81,15 @@ const submit =async ()=>{
             </article>
             <article class="form-group">
                 <label for="firstname" class="form-label">Primer Nombre</label>
-                <input class="form-input" type="text" placeholder="johndoe" id="firstname" name="firstname" @input="updateFirstname"/>
+                <input class="form-input" type="text" placeholder="johndoe" id="firstname" name="firstname" @input="updateFirstname" :value="firstname"/>
             </article>
             <article class="form-group">
                 <label for="middlenae" class="form-label">Segundo Nombre</label>
-                <input class="form-input" type="text" placeholder="johndoe" id="middlename" name="middlename" @input="updateMiddlename"/>
+                <input class="form-input" type="text" placeholder="johndoe" id="middlename" name="middlename" @input="updateMiddlename" :value="middlename"/>
             </article>
             <article class="form-group">
                 <label for="lastname" class="form-label">Apellido</label>
-                <input class="form-input" type="text" placeholder="johndoe" name="lastname" @input="updatelaststname"/>
+                <input class="form-input" type="text" placeholder="johndoe" name="lastname" @input="updatelaststname" :value="lastname"/>
             </article>
             <InputEmail label="Email de usuario" type="email" placeholder="johndoe@gmail.com"  is-required="true" />
             <button v-on:click="submit">Generar Order</button>
@@ -86,7 +98,11 @@ const submit =async ()=>{
 </template>
 <style scope>
     .customer-form{
-        width: 90%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
     .form-group{
         display: flex;
