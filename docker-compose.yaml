@@ -40,6 +40,12 @@ services:
       mode: replicated
       replicas: 2
       endpoint_mode: vip
+    environment:
+      - DB_HOST=database-1.cosfjltrhf00.us-east-1.rds.amazonaws.com
+      - DB_PORT=3306
+      - DB_DATABASE=test_alegra
+      - DB_USERNAME=admin
+      - DB_PASSWORD=L4pZDev$$-101291$$13
 
     command: bash -c "php artisan serve --host=0.0.0.0"
     ports:
