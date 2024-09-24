@@ -1,22 +1,22 @@
 
 services:
-  database:
-    image: mysql
-    container_name: database_alegra
-    restart: no
-    networks: 
-      - backend
-    ports:
-      - "127.0.0.1:3306:3306"
-    expose: 
-      - 3306
-    volumes:
-      - dbdata:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=LaPs#D3v3l0pMen7
-      - MYSQL_DATABASE=alegra-test
-      - MYSQL_USER=Laps
-      - MYSQL_PASSWORD=LaPs#D3v3l0pMen7
+#  database:
+#    image: mysql
+#    container_name: database_alegra
+#    restart: no
+#    networks: 
+#      - backend
+#    ports:
+#      - "127.0.0.1:3306:3306"
+#    expose: 
+#      - 3306
+#    volumes:
+#      - dbdata:/var/lib/mysql
+#    environment:
+#      - MYSQL_ROOT_PASSWORD=LaPs#D3v3l0pMen7
+#      - MYSQL_DATABASE=alegra-test
+ #     - MYSQL_USER=Laps
+#      - MYSQL_PASSWORD=LaPs#D3v3l0pMen7
     
   cache:
     restart: no
