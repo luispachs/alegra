@@ -21,12 +21,14 @@ class Authentication{
             'exp' => $expiration->getTimestamp(),
             'id'  => $id
         ];
-        $jwt = JWT::encode($payload,env('JWT_KEY'),self::hash);
+        $key =(string) env('JWT_KEY');
+        $jwt = JWT::encode($payload,$key ,self::hash);
         return $jwt;
     }
     public static function validate(string $jwt):Array{
         $stdClass =new stdClass();
-        $decode = JWT::decode($jwt, new Key(env('JWT_KEY'), self::hash),$stdClass);
+        $key = (string) env('JWT_KEY');
+        $decode = JWT::decode($jwt, new Key($key, self::hash),$stdClass);
         return (Array) $decode;
     }
 }
