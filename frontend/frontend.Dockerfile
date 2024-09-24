@@ -6,6 +6,6 @@ COPY ./ .
 RUN npm run build
 
 FROM nginx as production-stage
-RUN mkdir /home/frontend/
+RUN mkdir /home/frontend
 COPY --from=build-stage /home/frontend/app/dist /home/frontend/app
 COPY nginx.conf /etc/nginx/nginx.conf
