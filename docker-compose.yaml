@@ -100,7 +100,7 @@ services:
 
       command: bash -c "php artisan schedule:work"
       ports:
-        - "127.0.0.1:7000-7001:8000"
+        - "127.0.0.1:7002:8000"
       expose:
         - 8000
       networks:
