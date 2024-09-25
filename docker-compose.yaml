@@ -79,7 +79,7 @@ services:
     networks:
       - backend
    
-scheduler:
+taskmanager:
     restart: always
     image: alegra-test-backend
     #container_name: backend-alegra
