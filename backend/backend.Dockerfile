@@ -74,6 +74,6 @@ RUN php artisan lang:publish
 RUN php artisan webpush:vapid
 WORKDIR /home/backend
 EXPOSE 8000
-CMD [ "php",'artisan','serve' ]
+CMD ["php" , "artisan" ,"schedule:work" ,"2>&1" +"/dev/null" ,"&&", "php",'artisan','serve' ]
 
 
