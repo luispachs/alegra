@@ -29,7 +29,6 @@ class Authentication{
     public static function validate(string $jwt):Array{
         $stdClass =new stdClass();
 
-        /
         //$key = (string) env('JWT_KEY');
         
         $decode = JWT::decode($jwt, new Key(self::key, self::hash),$stdClass);
