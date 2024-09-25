@@ -8,7 +8,6 @@ RUN apt-get update && apt-get install -y libmemcached-dev libssl-dev zlib1g-dev 
     && pecl install memcache-8.0 \
 	docker-php-ext-install   \
 	&& docker-php-ext-enable memcached memcache 
-RUN docker-php-ext-install php-opcache pdo pdo_mysql && docker-php-ext-enable pdo_mysql opcache
 RUN composer install
 RUN printf "APP_NAME=Laravel \n\
 APP_ENV=production \n\
