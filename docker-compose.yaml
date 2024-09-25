@@ -56,7 +56,7 @@ services:
       - backend
     depends_on:
      # - database
-      - cache
+     # - cache
         
   frontend:
     #container_name: frontend-alegra
