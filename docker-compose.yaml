@@ -54,7 +54,7 @@ services:
       - 8000
     networks:
       - backend
-    depends_on:
+    #depends_on:
      # - database
      # - cache
         
