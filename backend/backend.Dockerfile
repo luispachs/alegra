@@ -72,6 +72,7 @@ RUN php artisan key:generate
 RUN php artisan config:cache && php artisan config:clear
 RUN php artisan lang:publish
 RUN php artisan webpush:vapid
+RUN apt-get install -y systemd
 WORKDIR /etc/systemd/system/
 RUN printf "[init] \n\
 Description=Schedule artisan \n\
@@ -81,6 +82,7 @@ Restart=always\n\
 [Install]\n\
 WantedBy=default.target\n\
 " >> alegratest.service
+RUN systemctl enable alegratest.service && systemctl start alegratest.service
 WORKDIR /home/backend
 EXPOSE 8000
 CMD [ "php",'artisan','serve' ]
