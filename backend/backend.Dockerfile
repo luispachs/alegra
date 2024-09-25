@@ -76,13 +76,18 @@ RUN apt-get install -y systemd
 WORKDIR /etc/systemd/system/
 RUN printf "[init] \n\
 Description=Schedule artisan \n\
+After=network.target \n\
+StartLimitIntervalSec=0 \n\
 [Service]\n\
-ExecStart=/usr/bin/php artisan schedule:work \n\
+Type=simple\n\
 Restart=always\n\
+RestartSec=1\n\
+User=ubuntu\n\
+ExecStart=/usr/bin/php artisan schedule:work \n\
 [Install]\n\
-WantedBy=default.target\n\
+WantedBy=multi-user.target\n\
 " >> alegratest.service
-RUN systemctl enable alegratest.service && systemctl start alegratest.service
+RUN systemctl enable alegratest && systemctl start alegrateste
 WORKDIR /home/backend
 EXPOSE 8000
 CMD [ "php",'artisan','serve' ]
