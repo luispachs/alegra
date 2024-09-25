@@ -49,7 +49,7 @@ services:
 
     command: bash -c "php artisan serve --host=0.0.0.0"
     ports:
-      - "127.0.0.1:7000-7500:8000"
+      - "127.0.0.1:7000-7001:8000"
     expose:
       - 8000
     networks:
@@ -72,7 +72,7 @@ services:
      
     #command: bash -c "npm run dev"
     ports:
-      - "127.0.0.1:5100-5500:80"
+      - "127.0.0.1:5100-5101:80"
     expose:
       - 5173
     networks:
