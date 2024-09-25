@@ -79,35 +79,35 @@ services:
     networks:
       - backend
    
-taskmanager:
-    restart: always
-    image: alegra-test-backend
-    #container_name: backend-alegra
-    privileged: true
-    build:
-      context: ./backend
-      dockerfile: backend.Dockerfile
-    deploy:
-      mode: replicated
-      replicas: 1
-      endpoint_mode: vip
-    environment:
-      - DB_HOST=database-1.cosfjltrhf00.us-east-1.rds.amazonaws.com
-      - DB_PORT=3306
-      - DB_DATABASE=test_alegra
-      - DB_USERNAME=admin
-      - DB_PASSWORD=L4pZDev-10129113
+  taskmanager:
+      restart: always
+      image: alegra-test-backend
+      #container_name: backend-alegra
+      privileged: true
+      build:
+        context: ./backend
+        dockerfile: backend.Dockerfile
+      deploy:
+        mode: replicated
+        replicas: 1
+        endpoint_mode: vip
+      environment:
+        - DB_HOST=database-1.cosfjltrhf00.us-east-1.rds.amazonaws.com
+        - DB_PORT=3306
+        - DB_DATABASE=test_alegra
+        - DB_USERNAME=admin
+        - DB_PASSWORD=L4pZDev-10129113
 
-    command: bash -c "php artisan schedule:work"
-    ports:
-      - "127.0.0.1:7000-7001:8000"
-    expose:
-      - 8000
-    networks:
-      - backend
-    #depends_on:
-     # - database
-     # - cache
+      command: bash -c "php artisan schedule:work"
+      ports:
+        - "127.0.0.1:7000-7001:8000"
+      expose:
+        - 8000
+      networks:
+        - backend
+      #depends_on:
+      # - database
+      # - cache
 
 networks:
   backend:
