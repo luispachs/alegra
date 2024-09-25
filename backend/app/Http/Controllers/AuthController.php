@@ -44,6 +44,7 @@ class AuthController extends Controller
       
             return response()->json(['status'=>'succesfull',"message"=>"authorize"],200);
         }catch(\Exception $e){
+            Log::error($e->getMessage(),['trace' => $e->getTraceAsString()]);
             return response()->json(['status'=>'unauthorize'],401);
         }
     }
