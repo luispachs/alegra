@@ -18,16 +18,16 @@ services:
  #     - MYSQL_USER=Laps
 #      - MYSQL_PASSWORD=LaPs#D3v3l0pMen7
     
-  cache:
-    restart: no
-    container_name: cache_alegra
-    image: memcached
-    networks: 
-      - backend
-    ports:
-      - "127.0.0.1:11211:11211"
-    expose: 
-      - 11211
+  #cache:
+    #restart: no
+    #container_name: cache_alegra
+    #image: memcached
+    #networks: 
+    #  - backend
+    #ports:
+    #  - "127.0.0.1:11211:11211"
+    #expose: 
+    #  - 11211
 
   backend:
     restart: always
@@ -90,12 +90,12 @@ networks:
     attachable: true
 
 
-  database:
-    driver: bridge
+  #database:
+    #driver: bridge
 
 
-  memcached:
-    driver: bridge
+  #memcached:
+    #driver: bridge
  
 volumes:
   dbdata:
