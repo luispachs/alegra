@@ -72,22 +72,6 @@ RUN php artisan key:generate
 RUN php artisan config:cache && php artisan config:clear
 RUN php artisan lang:publish
 RUN php artisan webpush:vapid
-RUN apt-get install -y systemd
-WORKDIR /etc/systemd/system/
-RUN printf "[Unit] \n\
-Description=Schedule artisan \n\
-After=network.target \n\
-StartLimitIntervalSec=0 \n\
-[Service]\n\
-Type=simple\n\
-Restart=always\n\
-RestartSec=1\n\
-User=ubuntu\n\
-ExecStart=/usr/bin/php artisan schedule:work \n\
-[Install]\n\
-WantedBy=multi-user.target\n\
-" >> alegratest.service
-RUN service alegratest start
 WORKDIR /home/backend
 EXPOSE 8000
 CMD [ "php",'artisan','serve' ]
