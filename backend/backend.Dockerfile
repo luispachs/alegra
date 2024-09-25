@@ -3,7 +3,7 @@ USER root:root
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 COPY . /home/backend
 WORKDIR /home/backend
-RUN apt-get update && apt-get install -y libmemcached-dev libssl-dev zlib1g-dev zip cron\
+RUN apt-get update && apt-get install -y libmemcached-dev libssl-dev zlib1g-dev zip\
 	&& pecl install memcached-3.2.0 \
     && pecl install memcache-8.0  && \
 	docker-php-ext-install   pdo pdo_mysql  \
@@ -73,7 +73,6 @@ RUN php artisan config:cache && php artisan config:clear
 RUN php artisan lang:publish
 RUN php artisan webpush:vapid
 WORKDIR /home/backend
-RUN (crontab -l ; echo "* * * * * echo "php artisan schedule:work" >> /var/log/cron.log") | crontab
 EXPOSE 8000
 CMD ["php",'artisan','serve']
 
