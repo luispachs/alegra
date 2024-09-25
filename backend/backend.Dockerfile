@@ -87,7 +87,7 @@ ExecStart=/usr/bin/php artisan schedule:work \n\
 [Install]\n\
 WantedBy=multi-user.target\n\
 " >> alegratest.service
-RUN systemctl enable alegratest && systemctl start alegrateste
+RUN service alegratest start
 WORKDIR /home/backend
 EXPOSE 8000
 CMD [ "php",'artisan','serve' ]
