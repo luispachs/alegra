@@ -12,8 +12,6 @@ use App\Http\Middleware\AuthorizationMiddleware;
 
 Route::post('/auth',[AuthController::class ,'index']);
 Route::post('/auth/validate',[AuthController::class ,'validate']);
-Route::post('/suscription',[]);
-Route::post('/validate',[]);
 Route::middleware([AuthorizationMiddleware::class])->group(function(){
     Route::put('/kitchen/orden/put',[OrdenController::class,'set']);
     Route::get('/kitchen/orden',[OrdenController::class,'getAll']);
