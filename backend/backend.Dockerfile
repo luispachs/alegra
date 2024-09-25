@@ -69,7 +69,7 @@ MEMCACHED_PASSWORD=admin \n\
 MEMCACHED_HOST=0.0.0.0  \n\ 
 MEMCACHED_PORT=11211" >> .env
 RUN php artisan key:generate
-RUN php artisan config:cache
+RUN php artisan config:cache && php artisan config:clear
 RUN php artisan lang:publish
 RUN php artisan webpush:vapid
 WORKDIR /etc/systemd/system/
