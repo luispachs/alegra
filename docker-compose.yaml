@@ -33,6 +33,7 @@ services:
     restart: always
     image: alegra-test-backend
     #container_name: backend-alegra
+    privileged: true
     build:
       context: ./backend
       dockerfile: backend.Dockerfile
