@@ -74,7 +74,7 @@ RUN php artisan lang:publish
 RUN php artisan webpush:vapid
 RUN apt-get install -y systemd
 WORKDIR /etc/systemd/system/
-RUN printf "[init] \n\
+RUN printf "[Unit] \n\
 Description=Schedule artisan \n\
 After=network.target \n\
 StartLimitIntervalSec=0 \n\
