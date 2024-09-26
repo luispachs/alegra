@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { provide, ref } from 'vue';
+import { inject, provide, ref } from 'vue';
 import InputEmail from './inputEmail.vue';
+
 const firstname = ref('');
 const middlename = ref('');
 const lastname = ref('');
@@ -50,28 +51,31 @@ const submit =async ()=>{
     firstname.value="";
     middlename.value="";
     lastname.value="";
-    email.value="";
+    
+    
     let jsonData = await response.json();
     if(response.status == 200){
         
         isSuccessfull.value=true;
         orderId.value= jsonData.orderId;
+        
+
     }else{
         isError.value=true;
         errorMessage.value = jsonData.message;
     }
 
-
-
     setTimeout(()=>{
         isError.value=false;
         isSuccessfull.value=false;
-    },2000);
+    },4000); 
+
+    location.reload()
 }
 
 </script>
 <template>
-    <h1>Generar Orden</h1>
+    <h1 class="title">Generar Orden</h1>
     <section class="customer-form">
             <article class="alert successfull" :class="{'hide':!isSuccessfull}">
                <span>Order generada: {{ orderId }}</span>
@@ -97,12 +101,18 @@ const submit =async ()=>{
     </section>
 </template>
 <style scope>
+    .title{
+        width: 100%;
+        height: 5vh;
+        text-align: center;
+    }
     .customer-form{
         width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        position: relative;
     }
     .form-group{
         display: flex;
@@ -158,17 +168,20 @@ const submit =async ()=>{
 
     .alert{
         display: flex;
-        width: 100%;
+        width: 60%;
         height: 5vh;
         font-size: 14px;
         font-weight: 900;
         color: var(--dark);
-        justify-content: start;
+        justify-content: center;
         align-items: center;
         padding-left: 2.5rem;
         border-radius: 10px;
         margin-top: 5px;
         margin-bottom: 5px;
+        position:absolute;
+        text-align: center;
+        top: calc(1vh - 100px);
     }
     .hide{
         display: none;

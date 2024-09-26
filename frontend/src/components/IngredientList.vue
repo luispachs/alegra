@@ -17,16 +17,16 @@ const json =await inventoryList.json();
 <template>
     <h1>Listado de Ingredientes</h1>
     <section class="purchase-historial">
-        <article v-for="data in json.data" :key="data.id" class="ingredient">
-            <Ingredient :id="data.id" :name="data.name" :amount="data.unit_available" :is-available="data.is_avilable"/>
-        </article>
+        <ul class="order-list" >
+            <li v-for="data in json.data" :key="data.id"  class="list-item">
+                <Ingredient :id="data.id" :name="data.name" :amount="data.unit_available" :is-available="data.is_avilable"/>
+            </li>
+        </ul>
     </section>
 </template>
 
 <style scope>
-    .ingredient{
-        width: 60%;
-    }
+
     .purchase-historial{
         height: 30vh;
         overflow-y: scroll;

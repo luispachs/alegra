@@ -11,9 +11,9 @@ if(props.isAvailable==0){
 }
 </script>
 <template>
-    <article :class="zebraStyle">
-        <h3 :class="{'unavailable':available}">{{ name }}</h3>
-        <article >
+    <article class="ingredient" :class="zebraStyle">
+        <h3 :class="{'unavailable':available}" class="ingredient-title">{{ name }}</h3>
+        <article class="ingredient-body">
             <div><p><strong>Id:</strong> {{ id }}</p></div>
             <div><p><strong>Cantidad disponible:</strong> {{ amount }}</p></div>
         </article>
@@ -34,6 +34,13 @@ if(props.isAvailable==0){
     background-color: var(--rose-quartz);
     border-radius: 5px;
     padding: 1rem;
+}
+.ingredient{
+    width: 100%;
+}
+.ingredient:hover{
+    font-weight: bolder;
+    text-decoration: underline;
 }
 
 </style>

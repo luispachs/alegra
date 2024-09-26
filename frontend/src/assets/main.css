@@ -14,3 +14,33 @@ body{
   align-items: center;
   padding: 4%;
 }
+
+.purchase-historial{
+  height: 30vh;
+  overflow-y: scroll;
+  width: 100% ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.purchase-historial::-webkit-scrollbar{
+  background-color: var(--thistle);
+  width: 7px;
+}
+.purchase-historial::-webkit-scrollbar-thumb{
+  background-color: var(--rose-quartz);
+  border-radius: 10px;
+}
+.order-list{
+  list-style: none;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+}
+
+.list-item{
+  width: 100%;
+}

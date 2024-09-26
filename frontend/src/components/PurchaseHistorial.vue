@@ -18,17 +18,20 @@ const json =await purchaseHistory.json();
 <template>
     <h1>Historial de Compras</h1>
     <section class="purchase-historial">
-        <article v-for="data in json.data" :key="data.id">
-            <Purchase :id="data.id" :name="data.name" :amount="data.amount" :date="data.created_at"/>
-        </article>
+        <ul class="order-list">
+            <li v-for="data in json.data" :key="data.id"  class="list-item">
+                <Purchase :id="data.id" :name="data.name" :amount="data.amount" :date="data.created_at"/>
+            </li>
+        </ul>
     </section>
 </template>
 
 <style scope>
     .purchase-historial{
-        height: 30vh;
-        overflow-y: scroll;
+        height: 40vh;
         width: 100% ;
+        padding-left: 5px;
+        padding-right: 5px;
     }
     .purchase-historial::-webkit-scrollbar{
         background-color: var(--thistle);
