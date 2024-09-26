@@ -23,7 +23,7 @@ setInterval(()=>{
     if(ingredientKey.value == 299){
         ingredientKey.value=200;
     }
-},90000);
+},30000);
 </script>
 <template>
     <section class="container">
