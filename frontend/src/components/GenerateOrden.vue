@@ -68,7 +68,7 @@ const submit =async ()=>{
     setTimeout(()=>{
         isError.value=false;
         isSuccessfull.value=false;
-    },4000); 
+    },2500); 
 
     location.reload()
 }
