@@ -9,7 +9,7 @@ let ordensKey = ref(0);
 let ingredientKey  = ref(100);
 let purchaseKey = ref(200)
 
-/* setInterval(()=>{
+setInterval(()=>{
     ordensKey.value++;
     if(ordensKey.value == 99){
         ordensKey.value=0;
@@ -23,7 +23,7 @@ let purchaseKey = ref(200)
     if(ingredientKey.value == 299){
         ingredientKey.value=200;
     }
-},8000); */
+},15000);
 </script>
 <template>
     <section class="container">
