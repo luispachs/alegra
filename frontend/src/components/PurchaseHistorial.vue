@@ -16,7 +16,10 @@ const json =await purchaseHistory.json();
 
 </script>
 <template>
-    <h1>Historial de Compras</h1>
+    <h1 class="panel-title">Historial de Compras</h1>
+    <section class="description-container">
+        <p class="description">Aquí puedes encontrar el historial de compras realizada y sus cantidades</p>
+    </section>
     <section class="purchase-historial">
         <ul class="order-list">
             <li v-for="data in json.data" :key="data.id"  class="list-item">
@@ -28,7 +31,8 @@ const json =await purchaseHistory.json();
 
 <style scope>
     .purchase-historial{
-        height: 40vh;
+        min-height: 90vh;
+        height: 90vh;
         width: 100% ;
         padding-left: 5px;
         padding-right: 5px;

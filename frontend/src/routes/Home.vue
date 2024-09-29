@@ -9,7 +9,7 @@ let ordensKey = ref(0);
 let ingredientKey  = ref(100);
 let purchaseKey = ref(200)
 
-setInterval(()=>{
+/* setInterval(()=>{
     ordensKey.value++;
     if(ordensKey.value == 99){
         ordensKey.value=0;
@@ -23,7 +23,7 @@ setInterval(()=>{
     if(ingredientKey.value == 299){
         ingredientKey.value=200;
     }
-},15000);
+},8000); */
 </script>
 <template>
     <section class="container">
@@ -31,7 +31,7 @@ setInterval(()=>{
             <GenerateOrden />
         </section>
     </section>
-    <section class="container">
+    <section class="container space-around">
         <section class="panel">
             <Suspense >
             <OrdenHistorial  :key="ordensKey"/>
@@ -65,13 +65,17 @@ setInterval(()=>{
     .container{
         display: flex;
         flex-direction: row;
-        padding-left: 4rem;
-        padding-right: 4rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
         width: 100%;
         justify-content: center;
         align-items: center;
-        height: 40vh;
+        height: min-content;
     }
+    .space-around{
+        justify-content: space-around;
+    }
+
     .full-size-row{
         display: flex;
         width: 90%;
@@ -80,11 +84,66 @@ setInterval(()=>{
     }
     .panel{
         width: 30%;
-        height: 40vh;
         display: flex;
         flex-direction: column;
         justify-content: start;
         align-items: center;
+    }
+    @media screen and (max-width:375px) {
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 5px;
+            padding-right:5px ;
+        }
+
+        .panel{
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width:375px)  and (max-width:430px){
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 5px;
+            padding-right:5px ;
+        }
+
+        .panel{
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width:430px)  and (max-width:768px){
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 5px;
+            padding-right:5px ;
+        }
+
+        .panel{
+            width: 100%;
+        }
+    }
+
+    @media screen and (min-width:768px)  and (max-width:1024px){
+        .container{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            padding-left: 5px;
+            padding-right:5px ;
+        }
+
+        .panel{
+            width: 100%;
+        }
+
     }
 
 </style>

@@ -1,22 +1,26 @@
 @import url(base.css);
 
-body{
+html,body{
   padding: 0;
   margin:0;
+  height: max-content;
 }
 #app {
   background-color: var(--mint-green);
   width: 100%;
-  min-height: 100vh;
+  height:calc(100% + 200px);
   display: flex;
   flex-direction: column;
   justify-content: start;
   align-items: center;
-  padding: 4%;
+  padding: 10px;
+}
+.full-size{
+  height: max-content;
 }
 
 .purchase-historial{
-  height: 30vh;
+  height: 32vh;
   overflow-y: scroll;
   width: 100% ;
   display: flex;
@@ -43,4 +47,79 @@ body{
 
 .list-item{
   width: 100%;
+}
+
+.description {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 900;
+  width: 80%;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.description-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+.panel-title{
+  font-size: 16px;
+}
+
+@media screen and (max-width:375px) {
+  #app {
+    background-color: var(--mint-green);
+    width: 100%;
+    height:calc(100% + 120px);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+  }
+}
+@media screen and (min-width:375px)  and (max-width:414px){
+  #app {
+    background-color: var(--mint-green);
+    width: 100%;
+    height:calc(100% + 60px);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+  }
+}
+
+
+@media screen and (min-width:430px)  and (max-width:768px){
+  #app {
+    background-color: var(--mint-green);
+    width: 100%;
+    height:calc(100% + 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+  }
+
+}
+
+@media screen and (min-width:768px)  and (max-width:820px){
+  #app {
+    background-color: var(--mint-green);
+    width: 100%;
+    height:calc(100% + 100px);
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+  }
+
 }

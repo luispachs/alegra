@@ -15,7 +15,10 @@ const json =await inventoryList.json();
 
 </script>
 <template>
-    <h1>Listado de Ingredientes</h1>
+    <h1 class="panel-title">Listado de Ingredientes</h1>
+    <section class="description-container">
+        <p class="description">Aquí puedes ver el listado de los ingredientes y su disponibilidad</p>
+    </section>
     <section class="purchase-historial">
         <ul class="order-list" >
             <li v-for="data in json.data" :key="data.id"  class="list-item">

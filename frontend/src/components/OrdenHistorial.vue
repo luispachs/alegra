@@ -15,7 +15,10 @@ import { ref } from 'vue';
                        
 </script>
 <template>
-    <h1>Historial de Ordenes</h1>
+    <h1 class="panel-title">Historial de Ordenes</h1>
+    <section class="description-container">
+        <p class="description">Aquí puedes encontrar el listado de ordenes realizadas, esta lista se actualiza  cada 10 segundos</p>
+    </section>
     <section class="purchase-historial">
         <ul class="order-list">
             <li v-for="orden in ordens" :key="orden.ordenId" class="list-item">

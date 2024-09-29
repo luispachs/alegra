@@ -59,29 +59,27 @@ const submit =async ()=>{
         isSuccessfull.value=true;
         orderId.value= jsonData.orderId;
         
+    location.reload()
 
     }else{
         isError.value=true;
         errorMessage.value = jsonData.message;
     }
-
     setTimeout(()=>{
         isError.value=false;
-        isSuccessfull.value=false;
     },2500); 
 
-    location.reload()
 }
 
 </script>
 <template>
-    <h1 class="title">Generar Orden</h1>
+    <h1 class="panel-title">Generar Orden</h1>
     <section class="customer-form">
             <article class="alert successfull" :class="{'hide':!isSuccessfull}">
                <span>Order generada: {{ orderId }}</span>
             </article>
             <article class="alert error" :class="{'hide':!isError}">
-               <span>Error al generar order: {{ errorMessage }}</span>
+               <span>Error al generar orden: {{ errorMessage }}</span>
             </article>
             <article class="form-group">
                 <label for="firstname" class="form-label">Primer Nombre</label>
@@ -181,18 +179,131 @@ const submit =async ()=>{
         margin-bottom: 5px;
         position:absolute;
         text-align: center;
-        top: calc(1vh - 100px);
+        top: calc(5vh - 100px);
     }
     .hide{
         display: none;
     }
-    @media screen and (max-width:600px) {
+
+    @media screen and (max-width:375px) {
+        .alert{
+        display: flex;
+        width: 90%;
+        height: 6vh;
+        font-size: 14px;
+        font-weight: 900;
+        color: var(--dark);
+        justify-content: center;
+        align-items: center;
+        padding-left: 2.5rem;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position:absolute;
+        text-align: center;
+        top: calc(1rem - 20px);
+    }
+    .hide{
+        display: none;
+    }
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%
+        }
+    }
+
+    @media screen and (min-width:375px)  and (max-width:430px){
+        .alert{
+        display: flex;
+        width: 90%;
+        height: 6vh;
+        font-size: 14px;
+        font-weight: 900;
+        color: var(--dark);
+        justify-content: center;
+        align-items: center;
+        padding-left: 2.5rem;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position:absolute;
+        text-align: center;
+        top: calc(1rem - 30px);
+    }
+    .hide{
+        display: none;
+    }
+    .form-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%
+        }
+    }
+
+    @media screen and (min-width:430px)  and (max-width:768px){
         .form-group{
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 80%;
+        width: 80%
+        }
+        .alert{
+        display: flex;
+        width: 90%;
+        height: 6vh;
+        font-size: 14px;
+        font-weight: 900;
+        color: var(--dark);
+        justify-content: center;
+        align-items: center;
+        padding-left: 2.5rem;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position:absolute;
+        text-align: center;
+        top: calc(1rem - 30px);
     }
-}
+    .hide{
+        display: none;
+    }
+    }
+
+    @media screen and (min-width:768px)  and (max-width:1024px){
+        .form-group{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 80%
+        }
+        .alert{
+        display: flex;
+        width: 90%;
+        height: 6vh;
+        font-size: 18px;
+        font-weight: 900;
+        color: var(--dark);
+        justify-content: center;
+        align-items: center;
+        padding-left: 2.5rem;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position:absolute;
+        text-align: center;
+        top: calc(1rem - 30px);
+    }
+    .hide{
+        display: none;
+    }
+
+    }
+
 </style>
